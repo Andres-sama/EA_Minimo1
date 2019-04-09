@@ -1,0 +1,8 @@
+<p> Bike for delete </p>
+<p></p>
+<div *ngFor = 'let id of bike; let i=index'>
+    <h6> The bike is: {{id}}</h6>
+    <p></p>
+     <button type="submit" (click)="deleteBike(id)">Delete bike</button>  
+    <p></p>
+</div>

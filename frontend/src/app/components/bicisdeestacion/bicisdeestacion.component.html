@@ -1,0 +1,13 @@
+<h2>Current bikes on {{station.station}}</h2>
+
+<div *ngFor = "let bike of Bikes; let i=index">
+  <input type="hidden" value="{{bike.name}}">
+
+  <h5>{{bike.name}}</h5>
+  <p>
+    <button class="btn btn-primary" [routerLink]="['bikeDetail',bike._id]"
+    ><i class="fa fa-eye"></i>&nbsp;</button>
+  </p>
+  <p></p>
+
+</div>
