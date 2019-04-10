@@ -6,7 +6,7 @@ const BikesSchema = require('./bikes').schema
 const StationsSchema = new Schema({
     station: {type: String,unique: true},
     state: String,
-    bikes: [BikesSchema],
+    bikes: Array,
     description: {type: String}
    
 })
