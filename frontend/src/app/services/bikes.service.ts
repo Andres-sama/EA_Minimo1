@@ -3,17 +3,17 @@ import { HttpClient } from "@angular/common/http"
 import { Bikes } from "../models/bikes";
 import { Environments } from "./environments"
 import {Observable} from "rxjs";
-
+import { Stations } from '../models/stations';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BikesService {  
   environment: Environments;
-  selectedBike: Bikes; 
+  selectedBikes: Bikes; 
 
   constructor( private http: HttpClient) {
- 
+    this.selectedBikes = new Bikes("","","");
     this.environment = new Environments();
    }
    //recoger los datos en http
@@ -22,17 +22,11 @@ export class BikesService {
    getBikes():Observable<Bikes[]> {
     return this.http.get<Bikes[]>(this.environment.urlBike + "/listaBikes");
   }
-
-  //Me borra la bike
-   deleteBike(_id: string) {
-    return this.http.delete(this.environment.urlBike + "/eliminar" + `/${_id}`);
-  }
-
   getBike(_id: string):Observable<Bikes> {
     return this.http.get<Bikes>(this.environment.urlBike + `/${_id}`);
   }
-  addBike(bike: Bikes) {
-    return this.http.post(this.environment.urlBike + "/nuevo", bike)
+
+  listAdd(id: string):Observable<Stations>{
+    return this.http.get<Stations>(this.environment.urlStation + "/add" + `/${id}`)
   }
-   
 }

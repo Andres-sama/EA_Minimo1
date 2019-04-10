@@ -34,8 +34,9 @@ export class NewbikeComponent implements OnInit {
           Validators.pattern(/^((?!(0))[0-9]{9})$/)])),
       }
     )
+   
   }
-
+  bikes: Bikes[];
   ngOnInit() {
     this.validation_messages = {
       'name': [
@@ -52,31 +53,12 @@ export class NewbikeComponent implements OnInit {
       ]
     }
   }
-
-  addBike() {
-    console.log(this.newbikeForm.value);
-    let bike = new Bikes();
-    bike._id = "";
-    bike.name = this.newbikeForm.value.name;
-    bike.kms = this.newbikeForm.value.address;
-    bike.description = this.newbikeForm.value.description;
-    this.newbikeService.addBike(bike)
-      .subscribe(
-        res => {
-          console.log(res);
-          let token = res['token'];
-          localStorage.setItem('token', token);
-
-          this.router.navigateByUrl("");
-        },
-
-        err => {
-          console.log(err);
-          this.handleError(err);
-        });
-
+  listBikes(){
+    this.newbikeService.getBikes().subscribe(res => {
+      this.bikes =res;
+      console.log("lista de bikes    " + this.bikes)
+    })
   }
-
   private handleError(err: HttpErrorResponse) {
     if( err.status == 500 ) {
       alert(err);

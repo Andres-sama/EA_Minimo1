@@ -14,30 +14,13 @@ function getBikebyId(req, res) {
 function listarBikes(req, res) {
     
     Bike.find({}, (err, bikes) => {
-        if (err) return res.status(500).send({message: `Error al realizar la petición: ${err}`})
+        if (err) return res.status(501).send({message: `Error al realizar la petición: ${err}`})
         if (!bikes) return res.status(404).send({message: 'No existen bikes en la bbdd'})
         
         console.log(bikes)
         res.status(200).send(bikes)
     })
   }
-
-
-//crear una nueva bike
-function saveBike (req,res){
-    let bike = new Bike( {
-        name: req.body.name,
-        kms: req.body.kms,
-        description: req.body.description
-    
-    });
-    console.log(bike)
-    bike.save((err, bike) => {
-        console.log(bike)
-        if (err) res.status(500).send({mensaje: 'Error al guardar en la base da datos ${err}'})
-        res.status(200).send({bike})
-    })   
-}
 
 
 //eliminar bike
@@ -59,6 +42,5 @@ function deleteBike (req, res){
 module.exports = {
     listarBikes,
     getBikebyId,
-    saveBike,
     deleteBike
 }

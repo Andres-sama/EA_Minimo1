@@ -1,13 +1,18 @@
-<h2>Current bikes on {{station.station}}</h2>
-
-<div *ngFor = "let bike of Bikes; let i=index">
-  <input type="hidden" value="{{bike.name}}">
-
-  <h5>{{bike.name}}</h5>
-  <p>
-    <button class="btn btn-primary" [routerLink]="['bikeDetail',bike._id]"
-    ><i class="fa fa-eye"></i>&nbsp;</button>
-  </p>
-  <p></p>
-
-</div>
+<h2>This are the bikes available</h2>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Kms</th>
+    <th>Description</th>
+    <th>State</th>
+  </tr>
+  <tr *ngFor="let bike of bikes;  let i=index; let bike=bike; trackBy: trackById ">
+    <td>{{bike.name}}</td>
+    <td>{{bike.kms}}</td>
+    <td>{{bike.description}}</td>
+    <td>{{bike.state}}</td>
+  </tr>
+  <ng-template ngFor let-bike [ngForOf]="bikes" let-i="index" let-bike="bike" [ngForTrackBy]="trackById">
+      <div [class.bike]="bike">({{i}}) {{bike.name}}</div>
+    </ng-template>
+</table>

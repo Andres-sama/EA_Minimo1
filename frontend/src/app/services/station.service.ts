@@ -13,13 +13,8 @@ export class StationService {
   selectedBike: Stations; 
 
   constructor( private http: HttpClient) { 
-    this.selectedBike = new Stations("","","");
-    
+ 
     this.environment = new Environments();
-  }
-
-  addStation(station: Stations) {
-    return this.http.post(this.environment.urlStation + "/nueva" , station)
   }
 
   getStations() :Observable<Stations[]> {
@@ -30,9 +25,10 @@ export class StationService {
   deleteStation(_id: string) {
     return this.http.delete(this.environment.urlStation + "/eliminar" + `/${_id}`);
   }
-
-  getStation(_id: string) :Observable<Stations> {
-    return this.http.get<Stations>(this.environment.urlStation + `/${_id}`);
+  deleteBike(stationId: string, bikeId: string) {
+    return this.http.delete(this.environment.urlRelation +"/delete"+ `/${stationId}` + `/${bikeId}`);  
   }
-
+  getBikesdeStation(_id: string) :Observable<Stations> {
+    return this.http.get<Stations>(this.environment.urlRelation + "/listaBikes" + "/${_id}");
+  }
 }

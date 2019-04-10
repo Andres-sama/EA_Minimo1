@@ -1,23 +1,24 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { StationsComponent } from './components/stations/stations';
-import { BikesComponent } from './components/bikes/bikes.component';
+import { StationsComponent } from './components/stations/stations.components';
 import { MainComponent } from "./components/main/main.component";
 import { NewbikeComponent } from "./components/newbike/newbike.component";
-import { BikedetalleComponent } from "./components/bikedetalle/bikedetalle.component";
+import { DeletebikeComponent } from "./components/deletebike/deletebike.component";
+import { BikesComponent } from "./components/bikes/bikes.components";
+import { BicisdeestacionComponent } from './components/bicisdeestacion/bicisdeestacion.component';
 
 const routes: Routes = [
 
-  {path: 'api/stations/:id', component: StationsComponent},
-  {path: 'api/stations/:id', component: StationsComponent},
-  {path: 'api/bike/:id', component: BikesComponent},
-
-  {path: '', component: MainComponent, pathMatch: 'full'},
-  {path: 'add_bike', component: NewbikeComponent},
-  {path: 'stationList', component: StationsComponent},
-  {path: 'bikeList', component: BikesComponent},
-  {path:'bikeList/bikeDetail/:id', component: BikedetalleComponent}
+  {path: 'api/station', component: StationsComponent},
+  {path: 'api/station/listStations', component: StationsComponent},
+  {path: 'api/relacion/add', component: NewbikeComponent},
+  {path: 'api/relacion/delete/:id', component: DeletebikeComponent},
+  {path: 'stationslist', component: StationsComponent},
+  {path: 'bikesList', component: BikesComponent},
+  {path: 'stationslist/stationBikes/:id', component: BicisdeestacionComponent},
+  {path: '', component: MainComponent}
+ 
 ];
 
 @NgModule({

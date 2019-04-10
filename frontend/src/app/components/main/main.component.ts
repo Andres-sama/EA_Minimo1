@@ -10,7 +10,7 @@ import {FormBuilder} from "@angular/forms";
 })
 export class MainComponent implements OnInit {
 
-  constructor(private newstationService: StationService,
+  constructor(private bikeList: StationService,
               private router: Router, private formBuilder: FormBuilder) { }
 
   ngOnInit() {

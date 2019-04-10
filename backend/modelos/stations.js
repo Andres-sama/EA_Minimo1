@@ -1,12 +1,12 @@
 'use strict'
 const mongoose = require('mongoose')
-const bikesSchema = require('./bikes').schema
 const Schema = mongoose.Schema
-
+const BikesSchema = require('./bikes').schema
 //esquema 
 const StationsSchema = new Schema({
     station: {type: String,unique: true},
-    bikes: [{type: Schema.Types.ObjectId, ref: 'Bike'}],
+    state: String,
+    bikes: [BikesSchema],
     description: {type: String}
    
 })
