@@ -8,10 +8,9 @@
   <tr *ngFor="let station of stations">
     <td>{{station.station}}</td>
     <td>{{station.state}}</td>
-    <td>{{station.description}}
-        <button class="btn btn-primary  btn-block" [routerLink]="['stationBikes', station._id]"
-        ><i class="fa fa-eye"></i> View</button>
-    </td>
+    <td>{{station.description}}</td>
+    <button class="btn btn-primary  btn-block" [routerLink]=
+      "['stationBikes', station._id]"><i class="fa fa-eye"></i> View</button>
   </tr>
   
 </table>

@@ -11,7 +11,7 @@ api.get('/stations/list', stationsCtrl.getStations)
 //listar bikes -OK
 api.get('/bikes/list', bikesCtrl.listarBikes)
 //lista de las bikes que no estan en la station
-api.get('/stations/nothere/:stationId', stationsCtrl.getBikesnotofStation)
+api.get('/bikes/nostatus', bikesCtrl.listarBikesnoStatus)
 //lista de las bike en la station
 api.get('/stations/here/:stationId', stationsCtrl.getBikesofStation)
 

@@ -10,13 +10,13 @@ import { BicisdeestacionComponent } from './components/bicisdeestacion/bicisdees
 
 const routes: Routes = [
 
-  {path: 'api/station', component: StationsComponent},
-  {path: 'api/station/listStations', component: StationsComponent},
+  {path: 'api/stations', component: StationsComponent},
+  {path: 'api/stations/list', component: StationsComponent},
   {path: 'api/relacion/add', component: NewbikeComponent},
   {path: 'api/relacion/delete/:id', component: DeletebikeComponent},
   {path: 'stationslist', component: StationsComponent},
   {path: 'bikesList', component: BikesComponent},
-  {path: 'stationslist/stationBikes/:id', component: BicisdeestacionComponent},
+  {path: 'stationslist/stationBikes/:id', component: BikesComponent},
   {path: '', component: MainComponent}
  
 ];

@@ -18,7 +18,7 @@ export class StationService {
   }
 
   getStations() :Observable<Stations[]> {
-    return this.http.get<Stations[]>(this.environment.urlStation + "/listaStations");
+    return this.http.get<Stations[]>(this.environment.urlStation + "/list");
   }
 
   //Me borra la bike
@@ -29,6 +29,6 @@ export class StationService {
     return this.http.delete(this.environment.urlRelation +"/delete"+ `/${stationId}` + `/${bikeId}`);  
   }
   getBikesdeStation(_id: string) :Observable<Stations> {
-    return this.http.get<Stations>(this.environment.urlRelation + "/listaBikes" + "/${_id}");
+    return this.http.get<Stations>(this.environment.urlStation +"/here" + `/${_id}`);
   }
 }

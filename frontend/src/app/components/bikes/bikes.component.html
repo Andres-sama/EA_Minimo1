@@ -1,17 +1,47 @@
-<h2>List of Bikes</h2>
+<h2 class="blue-text text-darken-2">Available Bikes</h2>
+<div class="container">
+    <table class="table table-bordered">
+        <thead class="info">
+        <th>Name</th>
+        <th>Kms</th>
+        <th>Description</th>
+        <th>Action</th>
+      </thead>
+        <tr *ngFor ="let bike of bikes; let i=index" >
+        <ng-container *ngIf="bike.state">
+          <td>{{bike.name}}</td>
+          <td>{{bike.kms}}</td>
+          <td>{{bike.description}}</td>
+          <td><button class="deleteBike(bike._id)"><i class="fa fa-trash" aria-hidden="true">
+          </i> Delete</button></td>
+        </ng-container>
+        </tr>
+  </table>
+  
+</div>
+<h2 class="blue-text text-darken-2">Not assigned Bikes</h2>
+<div class="container">
 
-  <div *ngFor = "let bike of bikes; let i=index">
-  <input type="hidden" value="{{bike.name}}">
-
-      <h5>{{bike.name}}</h5>
-        <p>
-         <button class="btn btn-primary" [routerLink]="['bikeDetail',bike._id]"><i class="fa fa-eye"></i>&nbsp;See bike detail</button>
-         <button class="btn btn-danger" (click)="delete"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp; Delete bike</button>
-        </p>
-    <p></p>
-
+    <table class="table table-bordered">
+        <thead class="info">
+        <th>Name</th>
+        <th>Kms</th>
+        <th>Description</th>
+        <th>state</th>
+      </thead>
+      
+        <tr *ngFor ="let bike of bikes; let i=index">
+          <ng-container *ngIf="!bike.state">
+          <td>{{bike.name}}</td>
+          <td>{{bike.kms}}</td>
+          <td>{{bike.description}}</td>
+          <td><button class="addBike(bike._id)"><i class="fa fa-plus" aria-hidden="true">
+          </i> Add</button></td>
+        </ng-container> 
+        </tr>
+  </table>
 </div>
 
-<p><p>
-  <button class="logout" [routerLink]="['']"><i class="fa fa-toggle-left" aria-hidden="true"></i> Back to main menu</button>
-</p><p>
+<p>
+<button class="logout" [routerLink]="['']"><i class="fa fa-toggle-left" aria-hidden="true">
+</i> Back to main menu</button></p>
