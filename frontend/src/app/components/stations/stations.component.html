@@ -1,16 +1,19 @@
-<h2>This are the stations available</h2>
-<table>
-  <tr>
-    <th>Station</th>
-    <th>State</th>
-    <th>Description</th>
-  </tr>
-  <tr *ngFor="let station of stations">
-    <td>{{station.station}}</td>
-    <td>{{station.state}}</td>
-    <td>{{station.description}}</td>
-    <button class="btn btn-primary  btn-block" [routerLink]=
-      "['stationBikes', station._id]"><i class="fa fa-eye"></i> View</button>
-  </tr>
-  
-</table>
+<h2 class="blue-text text-darken-2"> This are the stations available</h2>
+<div class="container-auto">
+    <table class="table table-bordered">
+        <thead class="info">
+        <th class="table-success">Station</th>
+        <th class="table-success">State</th>
+        <th class="table-success">Description</th>
+        <th class="table-success">Action</th>
+      </thead>
+        <tr *ngFor="let station of stations">
+          <td class="table-light">{{station.station}}</td>
+          <td class="table-light">{{station.state}}</td>
+          <td class="table-light">{{station.description}}</td>
+          <td class="table-light"><button class="btn btn-primary  btn-block" [routerLink]=
+            "['stationBikes', station._id]"><i class="fa fa-eye"></i> View</button>
+          </td>
+        </tr>
+  </table>
+</div>

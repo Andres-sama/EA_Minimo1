@@ -3,7 +3,7 @@ import { StationService} from "../../services/station.service";
 import {Router} from "@angular/router";
 import { HttpErrorResponse } from "@angular/common/http";
 import {FormBuilder, FormControl, FormGroup, NgForm} from "@angular/forms";
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 import { Stations } from "../../models/stations"
 import {BikesService} from "../../services/bikes.service";
 import {Bikes} from "../../models/bikes";
@@ -14,16 +14,23 @@ declare var M: any
   templateUrl: './bikes.component.html',
   styleUrls: ['./bikes.component.css']
 })export class BikesComponent implements OnInit {
-
-  constructor(private BikesService: BikesService, private router: Router) {
-
-   }
-
+  station: Stations;
   bikes: Bikes[];
   bikes2: Bikes[];
+  constructor( private stationService: StationService,private activatedRouter: ActivatedRoute,private BikesService: BikesService, private router: Router) {
+    this.station = new Stations();
+   }
+
 
   ngOnInit() {
     this.getBikes();
+  }
+  getBikeId(id: string) {
+    this.stationService.getBikesdeStation(id)
+      .subscribe(res =>{
+        this.bikes = res["bike"];
+      });
+    console.log(this.bikes);
   }
   getBikes() {
     this.BikesService.getBikes()

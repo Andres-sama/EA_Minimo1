@@ -1,22 +1,26 @@
 import { Component, OnInit } from '@angular/core';
-import {Stations} from "../../models/stations";
-import {ActivatedRoute} from "@angular/router";
-import {StationService} from "../../services/station.service";
+import { StationService} from "../../services/station.service";
+import {Router} from "@angular/router";
+import { HttpErrorResponse } from "@angular/common/http";
+import {FormBuilder, FormControl, FormGroup, NgForm} from "@angular/forms";
+import {ActivatedRoute} from '@angular/router';
+import { Stations } from "../../models/stations"
+import {BikesService} from "../../services/bikes.service";
 import {Bikes} from "../../models/bikes";
+declare var M: any
 
 @Component({
   selector: 'app-bicisdeestacion',
   templateUrl: './bicisdeestacion.component.html',
   styleUrls: ['./bicisdeestacion.component.css']
-})
-export class BicisdeestacionComponent implements OnInit {
-
+})export class BicisdeestacionComponent implements OnInit {
   station: Stations;
-  bike: Bikes;
-
-  constructor(private activatedRouter: ActivatedRoute, private stationService: StationService) {
+  bikes: Bikes[];
+  bikes2: Bikes[];
+  constructor( private stationService: StationService,private activatedRouter: ActivatedRoute, ) {
     this.station = new Stations();
-  }
+   }
+
 
   ngOnInit() {
     this.activatedRouter.params.subscribe(params => {
@@ -26,14 +30,15 @@ export class BicisdeestacionComponent implements OnInit {
         this.station._id = '';
       }
     });
-    this.getBike(this.station._id);
+    this.getBikeId(this.station._id);
   }
-
-  getBike(id: string) {
+  getBikeId(id: string) {
     this.stationService.getBikesdeStation(id)
       .subscribe(res =>{
-        this.bike = res["bike"];
+        this.bikes = res["bikes"];
       });
-    console.log(this.bike);
+    console.log(this.bikes);
+  
+    }
   }
-}
+

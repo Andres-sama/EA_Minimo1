@@ -1,42 +1,43 @@
-<h2 class="blue-text text-darken-2">Available Bikes</h2>
-<div class="container">
+<h2 class="blue-text text-darken-2"> Available Bikes</h2>
+<div class="container-auto">
     <table class="table table-bordered">
         <thead class="info">
-        <th>Name</th>
-        <th>Kms</th>
-        <th>Description</th>
-        <th>Action</th>
+        <th class="table-success">Name</th>
+        <th class="table-success">Kms</th>
+        <th class="table-success">Description</th>
+        <th class="table-success">Action</th>
       </thead>
-        <tr *ngFor ="let bike of bikes; let i=index" >
+        <tr *ngFor ="let bike of bikes; let i=index">
         <ng-container *ngIf="bike.state">
-          <td>{{bike.name}}</td>
-          <td>{{bike.kms}}</td>
-          <td>{{bike.description}}</td>
-          <td><button class="deleteBike(bike._id)"><i class="fa fa-trash" aria-hidden="true">
-          </i> Delete</button></td>
+          <td class="table-light">{{bike.name}}</td>
+          <td class="table-light">{{bike.kms}}</td>
+          <td class="table-light">{{bike.description}}</td>
+          <td class="table-light"><button class="deleteBike(bike._id)" > <i class="fa fa-trash" aria-hidden="true">
+                </i> Delete</button>
+          </td>
         </ng-container>
         </tr>
   </table>
   
 </div>
-<h2 class="blue-text text-darken-2">Not assigned Bikes</h2>
-<div class="container">
+<h2 class="blue-text text-darken-2"> Not assigned Bikes</h2>
+<div class="container-auto">
 
     <table class="table table-bordered">
         <thead class="info">
-        <th>Name</th>
-        <th>Kms</th>
-        <th>Description</th>
-        <th>state</th>
+            <th class="table-success">Name</th>
+            <th class="table-success">Kms</th>
+            <th class="table-success">Description</th>
+            <th class="table-success">Action</th>
       </thead>
       
         <tr *ngFor ="let bike of bikes; let i=index">
           <ng-container *ngIf="!bike.state">
-          <td>{{bike.name}}</td>
-          <td>{{bike.kms}}</td>
-          <td>{{bike.description}}</td>
-          <td><button class="addBike(bike._id)"><i class="fa fa-plus" aria-hidden="true">
-          </i> Add</button></td>
+              <td class="table-light">{{bike.name}}</td>
+              <td class="table-light">{{bike.kms}}</td>
+              <td class="table-light">{{bike.description}}</td>
+              <td class="table-light"> <button class="addBike(bike._id)"><i class="fa fa-plus" aria-hidden="true">
+              </i> Add</button></td>
         </ng-container> 
         </tr>
   </table>

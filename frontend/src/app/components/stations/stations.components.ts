@@ -32,7 +32,6 @@ export class StationsComponent implements OnInit {
 
       });
   }
-
   /**
    *
    * @param id
@@ -49,14 +48,12 @@ export class StationsComponent implements OnInit {
             //Two way data binding!
             this.stations.splice(i,1);
             console.log("Se ha borrado correctamente ", this.stations);
-
           },
           err => {
             this.handleError(err);
           });
     }
   }
-
   /**
    *
    * @param err
