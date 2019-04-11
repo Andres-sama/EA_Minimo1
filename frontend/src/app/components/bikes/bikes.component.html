@@ -31,7 +31,7 @@
             <th class="table-success">Action</th>
       </thead>
       
-        <tr *ngFor ="let bike of bikes; let i=index">
+        <tr *ngFor ="let bike of bikes2; let i=index">
           <ng-container *ngIf="!bike.state">
               <td class="table-light">{{bike.name}}</td>
               <td class="table-light">{{bike.kms}}</td>

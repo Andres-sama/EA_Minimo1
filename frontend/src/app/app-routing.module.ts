@@ -6,7 +6,6 @@ import { MainComponent } from "./components/main/main.component";
 import { NewbikeComponent } from "./components/newbike/newbike.component";
 import { DeletebikeComponent } from "./components/deletebike/deletebike.component";
 import { BikesComponent } from "./components/bikes/bikes.components";
-import { BicisdeestacionComponent } from './components/bicisdeestacion/bicisdeestacion.component';
 
 const routes: Routes = [
 

@@ -7,34 +7,45 @@ import {ActivatedRoute} from '@angular/router';
 import { Stations } from "../../models/stations"
 import {BikesService} from "../../services/bikes.service";
 import {Bikes} from "../../models/bikes";
+import { NgIf } from '@angular/common';
 declare var M: any
 
 @Component({
   selector: 'app-bikes',
   templateUrl: './bikes.component.html',
-  styleUrls: ['./bikes.component.css']
+  styleUrls: ['./bikes.component.css'],
+  //template: 'The href is: {{href}} The idurl is: {{_idurl}}'
 })export class BikesComponent implements OnInit {
+  public href: string = "";
+  public _idurl: string;
   station: Stations;
   bikes: Bikes[];
   bikes2: Bikes[];
-  constructor( private stationService: StationService,private activatedRouter: ActivatedRoute,private BikesService: BikesService, private router: Router) {
+  constructor(private StationService: StationService,private BikesService: BikesService, private router: Router) {
     this.station = new Stations();
    }
 
-
   ngOnInit() {
-    this.getBikes();
+    //obtenemos la url
+    this.href = this.router.url;
+    //console.log("url is:" + this.router.url);
+    //sacamos el _id de la station
+    this._idurl = this.href.substr(27);
+    //console.log("(27): "+ this.href.substr(27));
+    //inciamos la función de listar por id
+    //this.station._id = this._idurl;
+    this.getBikeId(this._idurl);
+    this.getBikesnot();
   }
-  getBikeId(id: string) {
-    this.stationService.getBikesdeStation(id)
-      .subscribe(res =>{
-        this.bikes = res["bike"];
+  getBikeId(_idurl) {
+    this.BikesService.getBike(_idurl).subscribe(res =>{
+        this.bikes = res;
       });
     console.log(this.bikes);
   }
   getBikes() {
-    this.BikesService.getBikes()
-      .subscribe(res => {
+
+    this.BikesService.getBikes().subscribe(res => {
         this.bikes = res
         console.log("lista de estaciones  " + this.bikes)
       });
