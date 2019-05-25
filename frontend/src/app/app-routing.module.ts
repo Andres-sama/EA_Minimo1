@@ -11,7 +11,7 @@ const routes: Routes = [
 
   {path: 'api/stations', component: StationsComponent},
   {path: 'api/stations/list', component: StationsComponent},
-  {path: 'api/relacion/add', component: NewbikeComponent},
+  {path: 'add/:id', component: NewbikeComponent},
   {path: 'api/relacion/delete/:id', component: DeletebikeComponent},
   {path: 'stationslist', component: StationsComponent},
   {path: 'bikesList', component: BikesComponent},

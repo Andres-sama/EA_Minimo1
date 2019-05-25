@@ -21,6 +21,8 @@ declare var M: any
   station: Stations;
   bikes: Bikes[];
   bikes2: Bikes[];
+  bikeID: string;
+  stationID: string;
   constructor(private StationService: StationService,private BikesService: BikesService, private router: Router) {
     this.station = new Stations();
    }
@@ -41,21 +43,25 @@ declare var M: any
     this.BikesService.getBike(_idurl).subscribe(res =>{
         this.bikes = res;
       });
-    console.log(this.bikes);
-  }
-  getBikes() {
-
-    this.BikesService.getBikes().subscribe(res => {
-        this.bikes = res
-        console.log("lista de estaciones  " + this.bikes)
-      });
+    console.log("lista de bikes de la station funciona"+this.bikes);
   }
   getBikesnot() {
     this.BikesService.getBikesnot()
       .subscribe(res => {
         this.bikes2 = res
-        console.log("lista de estaciones no asignadas " + this.bikes2)
+        console.log("lista de bikes no asignadas funciona " + this.bikes2)
       });
+  }
+
+  addBike(_id: string){
+    if(confirm ('Are you sure you want to add it?')){
+      this.bikeID = _id;
+      this.StationService.addBike(this._idurl, this.bikeID).subscribe(res => {
+        this.getBikeId(this._idurl);
+        this.getBikesnot();
+        M.toast({html: 'Added successfully'});
+      });
+    }
   }
 
   deleteBike(_id: string){
@@ -63,8 +69,8 @@ declare var M: any
       this.BikesService.deleteBike(_id)
       //ver respuesta del server
       .subscribe(res => {
-        console.log(res)  
-        this.getBikes()
+        this.getBikeId(this._idurl);
+        this.getBikesnot();
         M.toast({html: 'Deleted successfully'})
       })
     }

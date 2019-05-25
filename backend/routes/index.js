@@ -16,10 +16,10 @@ api.get('/bikes/nostatus', bikesCtrl.listarBikesnoStatus)
 api.get('/stations/here/:stationId', stationsCtrl.getBikesofStation)
 
 //ADD & DELETE
-// añadir biike a station 
-api.put('/relacion/add/:stationId/:bikeId', stationsCtrl.addBiketoStation)
+// añadir bike a station 
+api.put('/relation/add/:stationId/:bikeId', stationsCtrl.addBiketoStation)
 // eliminar bike a station
-api.delete('/relacion/delete/:stationId/:bikeId', stationsCtrl.deleteBike)
+api.delete('/relation/delete/:stationId/:bikeId', stationsCtrl.deleteBike)
 
 //BUSQUEDA
 //Encontrar una bike por ID 

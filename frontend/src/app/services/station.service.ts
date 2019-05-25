@@ -31,4 +31,9 @@ export class StationService {
   getBikesdeStation(_id: string) :Observable<Stations> {
     return this.http.get<Stations>(this.environment.urlStation +"/here" + `/${_id}`);
   }
+
+  //ADD BIKE
+  addBike(stationId: string, bikeId: string) {
+    return this.http.post(this.environment.urlRelation + "/add", stationId + bikeId);  
+  }
 }
