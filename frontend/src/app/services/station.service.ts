@@ -34,6 +34,6 @@ export class StationService {
 
   //ADD BIKE
   addBike(stationId: string, bikeId: string) {
-    return this.http.post(this.environment.urlRelation + "/add", stationId + bikeId);  
+    return this.http.post(this.environment.urlRelation + "/add" + `/${stationId}` + `/${bikeId}`, {stationId, bikeId});  
   }
 }
